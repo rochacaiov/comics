@@ -1,19 +1,18 @@
 package io.codigorocha.comics.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.codigorocha.comics.adapter.model.User;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class ComicCreateDTO {
     @NotNull
+    @JsonProperty(value = "userId")
     private Long userId;
 
     @NotNull
+    @JsonProperty(value = "comicId")
     private Long comicId;
 
     private String title;
@@ -25,7 +24,4 @@ public class ComicCreateDTO {
     private String isbn;
 
     private String description;
-
-    private User user;
-
 }

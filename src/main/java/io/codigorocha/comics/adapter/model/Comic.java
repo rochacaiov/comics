@@ -1,13 +1,19 @@
 package io.codigorocha.comics.adapter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +24,7 @@ public class Comic implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
@@ -31,7 +37,7 @@ public class Comic implements Serializable {
     private double price;
 
     @Column
-    private String authors;
+    private String creators;
 
     @Column
     private String isbn;
@@ -39,11 +45,8 @@ public class Comic implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @ManyToMany()
-    @JoinTable(
-            name = "user_comics",
-            joinColumns = @JoinColumn(name = "comic_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> users;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User user;
 }
