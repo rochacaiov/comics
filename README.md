@@ -25,6 +25,15 @@ Fui solicitado para desenvolver uma API REST que gerencia Comics (Livros) de usu
 </br>
 </br>
 
+## Endpoints
+* /users [POST = CADASTRO DE USUÁRIO]
+* /users/{id} [GET = LISTA INFORMAÇÕES/COMICS DE UM USUÁRIO]
+* /comics [POST = CADASTRO DE COMIC]
+
+</br>
+</br>
+</br>
+
 ## Instalação
 
 ### Pré-requisitos
