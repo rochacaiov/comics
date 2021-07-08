@@ -41,5 +41,5 @@ $ git clone https://github.com/vrochacaio/comics.git
 ```
 2. Instalando com Maven
 ```
-mvn clean install
+$ mvn clean install
 ```
