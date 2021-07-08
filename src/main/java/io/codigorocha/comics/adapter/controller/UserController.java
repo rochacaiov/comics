@@ -6,12 +6,17 @@ import io.codigorocha.comics.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
-import static org.springframework.http.MediaType.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("users")
@@ -22,10 +27,10 @@ public class UserController {
 
     @GetMapping(value = "/{id}", produces = {APPLICATION_JSON_VALUE})
     public ResponseEntity<UserResponseDTO> findById(@PathVariable("id") @NotBlank Long id) {
-        final var userResponse = userService.findById(id);
+        final var searchedUser = userService.findById(id);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(userResponse);
+                .body(searchedUser);
     }
 
     @PostMapping(consumes = {APPLICATION_JSON_VALUE}, produces = {APPLICATION_JSON_VALUE})
@@ -35,41 +40,4 @@ public class UserController {
                 .status(HttpStatus.CREATED)
                 .body(createdUser);
     }
-
-/*
-    @GetMapping("/signin")
-    public ModelAndView signIn() {
-        final ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("signin");
-        return modelAndView;
-    }
-
-    @GetMapping("/signup")
-    public ModelAndView signUp() {
-        final ModelAndView modelAndView = new ModelAndView();
-
-        modelAndView.setViewName("signup");
-        modelAndView.addObject("user", new User());
-
-        return modelAndView;
-    }
-
-    @PostMapping("/signup")
-    public String signUp(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes redirectAttributes) {
-        //return "redirect:signin";
-        return userService.signUp(user, result, redirectAttributes);
-
-
-//        if(result.hasErrors()) {
-//            System.out.println("TEVE ERRO NESSA PORRA AIO EIN");
-//            return "signup";
-//        }
-//
-////        this.userRepository.save(user);
-//        System.out.println(user.getName());
-//        System.out.println(user.getEmail());
-//        return "redirect:signin";
-    }*/
-
 }

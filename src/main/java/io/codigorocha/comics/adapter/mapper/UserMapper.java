@@ -10,18 +10,10 @@ public class UserMapper {
         return UserResponseDTO.builder()
                 .id(model.getId())
                 .name(model.getName())
+                .email(model.getEmail())
                 .cpf(model.getCpf())
                 .birthDate(model.getBirthDate())
-                .email(model.getEmail())
-                .build();
-    }
-
-    public static User to(UserResponseDTO responseDTO) {
-        return User.builder()
-                .name(responseDTO.getName())
-                .email(responseDTO.getEmail())
-                .cpf(responseDTO.getCpf())
-                .birthDate(responseDTO.getBirthDate())
+                .comics(ComicMapper.from(model.getComics()))
                 .build();
     }
 
