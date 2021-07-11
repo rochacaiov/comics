@@ -26,9 +26,19 @@ Fui solicitado para desenvolver uma API REST que gerencia Comics (Livros) de usu
 </br>
 
 ## Endpoints
-* ```/users``` POST = CADASTRO DE USUÁRIO
-* ```/users/{id}``` GET = LISTA INFORMAÇÕES/COMICS DE UM USUÁRIO
-* ```/comics``` POST = CADASTRO DE COMIC
+#### ```/users```
+* **POST:** // Propriedades JSON obrigatórias
+* * ```"name"``` string
+* * ```"email"``` string (regex=email)
+* * ```"cpf"``` string (regex=cpf)
+* * ```"birthdate"``` string
+#### ```/users/{id}```
+* **GET:** // Propriedades JSON obrigatórias
+* * ```"userid"``` int
+#### ```/comics```
+* **POST:** // Propriedades JSON obrigatórias
+* * ```"userid"``` int
+* * ```"comicid"``` int
 
 </br>
 </br>
