@@ -28,17 +28,17 @@ Fui solicitado para desenvolver uma API REST que gerencia Comics (Livros) de usu
 ## Endpoints
 #### ```/users```
 * **POST:** // Propriedades JSON obrigatórias
-* * ```"name"``` string
-* * ```"email"``` string (regex=email)
-* * ```"cpf"``` string (regex=cpf)
-* * ```"birthdate"``` string
+  * ```"name"``` string
+  * ```"email"``` string (regex=email)
+  * ```"cpf"``` string (regex=cpf)
+  * ```"birthdate"``` string
 #### ```/users/{id}```
 * **GET:** // Propriedades JSON obrigatórias
-* * ```"userid"``` int
+  * ```"userid"``` int
 #### ```/comics```
 * **POST:** // Propriedades JSON obrigatórias
-* * ```"userid"``` int
-* * ```"comicid"``` int
+  * ```"userid"``` int
+  * ```"comicid"``` int
 
 </br>
 </br>
